@@ -1,0 +1,269 @@
+.orderInfo{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 52px;
+}
+
+.invoiceBody{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+
+.invoiceHeading p{
+    margin: 0;
+    color: white;    
+    background-color: #27A844;
+    font-size: 1.5rem;
+
+    height: 40px;
+    align-content: center;
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.itemSelectHeading p{
+    margin: 0;
+    color: white;
+    background-color: #27A844;
+    font-size: 1.5rem;
+    height: 40px;
+    align-content: center;
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.invoiceHeading{
+    margin-bottom: 15px;
+}
+
+.invoiceDetailsBox{
+    width: 30vw;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+}
+
+.invoiceTitleBox{
+    margin: 5px;
+    text-align: left;
+}
+
+#txtCustomerAddress{
+    width: 195%;
+}
+
+#cmbCustomer{
+    width: 95%;
+}
+
+.oneBox input,select{
+    width: 90%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(202, 200, 200);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.25rem;
+    padding: 5px;
+}
+
+.oneBox{
+    text-align: left;
+    padding-left: 5px;
+    font-weight: 600;
+}
+
+.oneBox p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2rem;
+}
+
+.firstRow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.secondRow{
+    display: flex;
+}
+
+.fourthRow{
+    text-align: end;
+}
+
+.itemSelectBody{
+    height: 32vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#cmbItem{
+    width: 15vw;
+}
+
+.itemSelectBox{
+    width: 30vw;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+.add-item-button{
+    background-color: #C8454F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 32px;
+    margin-right: 25px;
+    margin-top: 25px;cursor: pointer;
+}
+
+.totalPriceBox{
+    width: 20vw;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1)  ;
+}
+
+.purchaseFunc{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#txtPriceBalance{
+    width: 190%;
+    margin-bottom: 50px;
+}
+
+.purchaseBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#purchaseBtn{
+    background-color: #29A741;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 32px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.total-price{
+    font-size: 1.5rem;
+    color: #66A9E0;
+}
+
+.sub-total-price{
+    color:  #D6737A;
+    font-size: 1.5rem;
+}
+
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.order-table{
+    margin-top: 50px;
+}
+
+.order-table table{
+    margin-right: 20px;
+    border: 2px solid rgba(166, 166, 166, 0.23);
+    box-shadow: 10px 10px 10px rgba(0,0, 0, 0.1);
+}
+
+.order-table th{
+    background-color: #01BFA5;
+    color: white;
+    width: 170px;
+    height: 50px;
+}
+
+.order-table td{
+    border-right: 1px solid rgba(162, 160, 160, 0.337);
+    width: 170px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 1.05rem;
+}
+
+@media screen and (max-width:1180px) {
+        .oneBox p{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 1rem;
+        }
+}
+ 
+@media screen and (max-width:1146px){
+    .orderInfo{
+        display: flex;
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+        align-items: center;
+        gap: 52px;
+    }
+
+    .oneBox p{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.1rem;
+    }
+
+    body{
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width:990px){
+    .purchaseFunc{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .invoiceBody{
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .invoiceDetailsBox{
+        width: 100%;
+    }
+
+    .totalPriceBox{
+        margin-top: 250px;
+        width: 100%;
+    }
+
+    .itemSelectBox{
+        width: 100%;
+    }
+
+    #txtCustomerAddress{
+        width: 90%;
+    }
+
+    #txtPriceBalance{
+        width: 90%;
+    }
+
+    .firstRow{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .secondRow{
+        display: flex;
+        flex-direction: column; 
+    }
+}

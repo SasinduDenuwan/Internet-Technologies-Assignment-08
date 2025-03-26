@@ -1,0 +1,126 @@
+.nav-container{
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007AFF;
+    box-shadow: 1px 1px 10px rgba(0,0,0, 0.1);
+}
+
+.nav-links{
+    list-style: none;
+    display: flex;
+    margin-right: 25px;
+}
+
+.nav-links li{
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    align-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.034);
+    text-align: center;
+}
+
+.nav-links li a{
+    color: #ce7b69;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.menu-bar{
+    display: none;
+}
+
+#burger{
+    text-align: center;
+    align-content: center;
+    font-size:1.8rem;
+    color: white;
+    border: 5px solid;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#closeBtn{
+    text-align: center;
+    align-content: center;
+    font-size:1.8rem;
+    color: white;
+    border: 5px solid;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin-right: 5px;
+}
+
+.menu-panel {
+    background-color: #007AFF;
+    color: white;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    top: -100%;
+    transition: top 0.5s ease-in-out; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-panel.active {
+    top: 0; 
+}
+
+.menu-panel ul {
+    list-style: none;
+    padding: 50px 20px;
+}
+.menu-panel ul li {
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.menu-panel ul li a {
+    text-decoration: none;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #ce7b69;
+    font-weight: 500;
+
+}
+
+.page-name p{
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width:785px) {
+    .menu-bar{
+        display: initial;
+    }
+
+    .container-links{
+        display: none;
+    }
+
+    .menu-bar{
+        margin-right: 25px;
+    }
+}

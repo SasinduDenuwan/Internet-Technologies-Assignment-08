@@ -1,0 +1,138 @@
+.customerSection{
+    margin-top: 125px;
+}
+
+.customerContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+h2{
+    font-size: 2rem;    
+}
+
+.inputData p{
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.inputData input{
+    font-size: 1.1rem;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30vw;
+}
+
+.inputData{
+    margin-left: 5px;
+}
+
+.inputBoxes{
+    display: flex;
+    flex-direction: column;
+}
+
+input:focus{
+    border: 3px solid darkblue;
+    outline: none;
+} 
+
+.customerButtons{
+    margin-top: 50px;
+    display: flex;
+    margin-right: 25px;
+}
+
+.customerButtons button{
+    margin-left: 5px;
+    height: 30px;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+    border: 0;
+}
+
+.save-btn{
+    background-color: #52ACFB;
+}
+
+.remove-btn{
+    background-color: #E33144;
+}
+
+.update-btn{
+    background-color: #FFBC0C;
+}
+
+.getAll-btn{
+    background-color: #2AA73D;
+}
+
+.clear-btn{
+    background-color: #DC3842;
+}
+
+.customerSection table{
+    margin-right: 20px;
+    border: 2px solid rgba(166, 166, 166, 0.23);
+    box-shadow: 10px 10px 10px rgba(0,0, 0, 0.1);
+}
+
+.customerSection th{
+    background-color: #DC3546;
+    color: white;
+    width: 170px;
+    height: 50px;
+}
+
+.customerSection td{
+    border-right: 1px solid rgba(162, 160, 160, 0.337);
+    width: 170px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 1.05rem;
+}
+
+
+tbody tr:hover{
+    background-color: #f5f5f5;
+}
+
+@media screen and (max-width:1000px) {
+    .customerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .customerTable{
+        margin-top: 50px;
+    }
+
+    .inputBoxes{
+        align-items: center;
+    }
+    
+    .textCustomer{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .customerButtons{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body{
+        overflow-y: scroll;
+    }
+
+    .inputData p{
+        font-size: 0.8rem;
+    }
+}

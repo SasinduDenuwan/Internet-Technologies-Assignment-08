@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashbord.css">
+    <link rel="stylesheet" href="/css/customer.css">
+    <link rel="stylesheet" href="/css/item.css">
+    <link rel="stylesheet" href="/css/order.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <header class="page-header">
+            <div class="nav-container">
+                <div class="page-name">
+                    <p class="main-heading">Dashboard</p>
+                </div>
+                
+                <div class="menu-bar"><i class="fa-solid fa-bars burger-btn" id="burger" aria-hidden="true"></i></div>
+
+                <div class="container-links">
+                    <nav class="navigation">
+                        <ul class="nav-links">
+                            <li class="nav-link-li"><a href="#dashboardID" class="nav-bar-btn">Home</a></li>
+                            <li class="nav-link-li"><a href="#customerSectionID" class="nav-bar-btn">Customer</a></li>
+                            <li class="nav-link-li"><a href="#itemSectionID" class="nav-bar-btn">Item</a></li>
+                            <li class="nav-link-li"><a href="#orderSectionID" class="nav-bar-btn">Orders</a></li>
+                        </ul>
+                    </nav>     
+                </div>
+
+            </div>
+            
+            <nav class="menu-panel" id="menu-panel-id">
+                <i class="fa-solid fa-xmark close-btn" id="closeBtn" aria-hidden="true"></i>
+                <ul>
+                    <li><a href="#dashboardID">Home</a></li>
+                    <li><a href="#customerSectionID">Customer</a></li>
+                    <li><a href="#itemSectionID">Item</a></li>
+                    <li><a href="#orderSectionID">Orders</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <main>
+            <section class="dashboard" id="dashboardID">
+                <div class="dashbord-container">
+
+                    <div class="dash-box" id="customer-box">
+                        <p class="box-title">Customers</p>
+                        <i class="fa-solid fa-users icons"></i>
+                        <h3 class="count" id="customer-count">0</h3>
+                    </div>
+
+                    <div class="dash-box" id="item-box">
+                        <p class="box-title">Items</p>
+                        <i class="fa-solid fa-cubes icons"></i>
+                        <h3 class="count" id="item-count">0</h3>
+                    </div>
+
+                    <div class="dash-box" id="orders-box">
+                        <p class="box-title">Orders</p>
+                        <i class="fa-solid fa-cart-shopping icons"></i> 
+                        <h3 class="count" id="order-count">0</h3>
+                    </div>
+
+                    <div class="dash-box" id="settings-box">
+                        <p class="box-title">Settings</p>
+                        <i class="fa-solid fa-gear icons"></i>
+                        <!-- <h3 class="count" id="setting-count">New</h3> -->
+
+                    </div>
+                    
+
+                </div>
+            </section>
+
+
+            <section class="customerSection" id="customerSectionID">
+                    <form class="customer-form" action="">
+                        <div class="customerContainer">
+                            <div class="customerDetails">
+                                <h2 class="textCustomer">Customer Registration</h2>
+                                <div class="inputBoxes">
+        
+                                    <div class="inputData">
+                                        <p>Customer ID</p>
+                                        <input type="text" class="customer-ID" id="customerID">
+                                        <br>    
+                                        <span class="validateError" id="cusIdError"></span>
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Customer Name</p>
+                                        <input type="text" class="customer-name" id="customerName">
+                                        <br>
+                                        <span class="validateError" id="cusNameError"></span>
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Customer Address</p>
+                                        <input type="text" class="customer-Address" id="customerAddress">
+                                        <br>
+                                        <span class="validateError" id="cusAddressError"></span>
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Customer Salary</p>
+                                        <input type="number" class="customer-Salary" id="customerSalary">
+                                        <br>
+                                        <span class="validateError" id="cusSalaryError"></span>
+                                    </div>
+                                </div>
+                                <div class="customerButtons">
+                                    <button type="button" class="save-btn" id="saveCustomer">Save</button>
+                                    <button type="button" class="remove-btn" id="removeCustomer">Remove</button>
+                                    <button type="button" class="update-btn" id="updateCustomer">Update</button>
+                                    <button type="button" class="getAll-btn" id="getAllCustomer">Get All</button>
+                                    <button type="button" class="clear-btn" id="clearCustomer">Clear All</button>
+                                </div>
+                            </div>
+        
+                            <div class="customerTableDiv">
+                                <table class="customerTable" id="customer-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Customer Address</th>
+                                            <th>Customer Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>C00 - 001</td>
+                                            <td>Sasindu Denuwan</td>
+                                            <td>Morawaka</td>
+                                            <td>150000</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>C00 - 002</td>
+                                            <td>Dilum Sharadha</td>
+                                            <td>Deniyaya</td>
+                                            <td>250000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+    
+    
+                <section class="itemSection" id="itemSectionID">
+                    <form class="item-form" action="">
+                        <div class="itemContainer">
+                            <div class="itemDetails">
+                                <h2 class="textItem">Item Form</h2>
+                                <div class="inputBoxes">
+        
+                                    <div class="inputData">
+                                        <p>Item Code</p>
+                                        <input type="text" class="item-ID" id="itemID">
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Item Name</p>
+                                        <input type="text" class="item-name" id="itemName">
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Item Qty</p>
+                                        <input type="text" class="item-qty" id="itemQty">
+                                    </div>
+        
+                                    <div class="inputData">
+                                        <p>Unit Price</p>
+                                        <input type="text" class="item-price" id="itemPrice">
+                                    </div>
+                                </div>
+                                <div class="itemButtons">
+                                    <button class="save-btn" id="saveItem">Save</button>
+                                    <button class="remove-btn" id="removeItem">Remove</button>
+                                    <button class="update-btn" id="updateItem">Update</button>
+                                    <button class="getAll-btn" id="getAllItem">Get All</button>
+                                    <button class="clear-btn" id="clearItem">Clear All</button>
+                                </div>
+                            </div>
+        
+                            <div class="itemTableDiv">
+                                <table class="itemTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>Item Qty</th>
+                                            <th>Unit Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>I00 - 001</td>
+                                            <td>Lux Bundel</td>
+                                            <td>100</td>
+                                            <td>48</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+            </section>
+
+
+            <section class="orderSection" id="orderSectionID">
+                <div class="orderContainer">
+                    <div class="orderInfo">
+                        <div class="invoiceDetailsBox">
+
+                            <div class="invoiceHeading">
+                                <p>Invoice Details</p>
+                            </div>
+
+                            <div class="invoiceBody">
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Order ID : </p>
+                                    <input type="text" class="invoicOrder-id" id="txtOrderID">
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Date : </p>
+                                    <input type="date" class="invoicOrder-date" id="txtOrderDate">
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Customer : </p>
+                                    <select name="customerCombo" class="invoicOrder-customer" id="cmbCustomer"></select>
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Customer ID : </p>
+                                    <input type="text" class="invoicOrder-customerId" id="txtCustomerID">
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Name : </p>
+                                    <input type="text" class="invoicOrder-customerName" id="txtCustomerName">
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Salary : </p>
+                                    <input type="text" class="invoicOrder-customerSalary" id="txtCustomerSalary">
+                                </div>
+
+                                <div class="oneBox">
+                                    <p class="invoiceTitleBox">Address : </p>
+                                    <input type="text" class="invoicOrder-customerAddress" id="txtCustomerAddress">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="itemSelectBox">
+
+                            <div class="itemSelectHeading">
+                                <p>Item Select</p>
+                            </div>
+
+                            <div class="itemSelectBody">
+
+                                <div class="firstRow">
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Item : </p>
+                                        <select name="itemCombo" class="itemSelect-item" id="cmbItem"></select>
+                                    </div>
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Item Code : </p>
+                                        <input type="text" class="itemSelect-itemCode" id="txtItemCode">
+                                    </div>
+                                </div>
+
+                                <div class="secondRow">
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Item Name : </p>
+                                        <input type="text" class="itemSelect-itemName" id="txtItemName">
+                                    </div>
+
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Price : </p>
+                                        <input type="text" class="itemSelect-itemPrice" id="txtItemPrice">
+                                    </div>
+
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">QtyOnH : </p>
+                                        <input type="text" class="itemSelect-qtyOnHand" id="txtItemQtyOnHand">
+                                    </div>
+                                </div>
+
+                                <div class="thirdRow">
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Order Quantity : </p>
+                                        <input type="text" class="itemSelect-orderQty" id="txtOrderQty">
+                                    </div>
+                                </div>
+                                
+                                <div class="fourthRow">
+                                    <button class="add-item-button" id="addItemBtn">Add Item
+                                        
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="totalPriceBox">
+
+                            <div class="purchaseBox">
+                                <div class="priceBox">
+                                    <p class="total-price" id="totalPrice">Total : Rs. <span id="totalGeneratePrice">00.0</span>/=</p>
+                                    <p class="sub-total-price" id="subTotalPrice">SubTotal : Rs. <span id="SubTotalGeneratePrice">00.0</span>  /=</p>
+                                </div>
+
+                                <div class="purchaseFunc">
+
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Cash : </p>
+                                        <input type="text" class="totalPriceBox-cash" id="txtPriceCash">
+                                    </div>
+
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Discount : </p>
+                                        <input type="text" class="totalPriceBox-discount" id="txtPriceDiscount">
+                                    </div>
+
+                                    <div class="oneBox">
+                                        <p class="invoiceTitleBox">Balance : </p>
+                                        <input type="text" class="totalPriceBox-balance" id="txtPriceBalance">
+                                    </div>
+
+                                </div>
+
+                                <button class="purchase-button" id="purchaseBtn">Purchase</button>
+
+                            </div>
+    
+    
+                        </div>
+                    </div>
+
+                    <div class="order-table">
+                        <table id="orderTable">
+                            <thead>
+                                <tr>
+                                    <th>Item Code</th>
+                                    <th>Item Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>I00 - 001</td>
+                                    <td>Soap</td>
+                                    <td>120.00</td>
+                                    <td>1500</td>
+                                    <td>120000021</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="js/navigation.js"></script>
+        <script src="controller/IndexController.js"></script>
+        <script src="controller/CustomerController.js"></script>
+
+</body>
+</html>
