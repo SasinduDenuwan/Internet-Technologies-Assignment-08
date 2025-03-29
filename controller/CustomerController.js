@@ -85,13 +85,44 @@ $(document).ready(function () {
             removeFromTable(cusID);
             alert("Customer deleted successfully!");
             $(".customer-form")[0].reset();
+            $(".customer-form input").css("border", "").next("span").text("");
         } else {
             alert("Customer ID not found!");
         }
     });
 
 
+    // Update Button in Customer Page
 
+    $('#updateCustomer').click(function (event) {
+        event.preventDefault();
+    
+        if (validateAllFields()) {
+            let customer = {
+                cusId: $('#customerID').val(),
+            };
+    
+            let cusName = $('#customerName').val();
+            let cusAddress = $('#customerAddress').val();
+            let cusSalary = $('#customerSalary').val();
+    
+            if (cusName) customer.cusName = cusName;
+            if (cusAddress) customer.cusAddress = cusAddress;
+            if (cusSalary) customer.cusSalary = cusSalary;
+    
+    
+            if (customerModel.updateCustomer(customer)) {
+                updateTable(customer);
+                console.log("Customer updated successfully!");
+                $(".customer-form")[0].reset();
+                $(".customer-form input").css("border", "").next("span").text("");
+            } else {
+                alert("Customer ID not found! Unable to update.");
+            }
+        }
+    });
+
+    
     // Save to the Customer Table
     
     function addToTable(customer) {
@@ -113,6 +144,21 @@ $(document).ready(function () {
             let rowId = $(this).find("td:first").text();
             if (rowId === cusId) {
                 $(this).remove();
+            }
+        });
+    }
+
+
+    // Update the Customer table
+    
+    function updateTable(customer) {
+        $("#customer-table tbody tr").each(function () {
+            let rowId = $(this).find("td:first").text();
+    
+            if (rowId === customer.cusId) {
+                $(this).find("td:eq(1)").text(customer.cusName);
+                $(this).find("td:eq(2)").text(customer.cusAddress);
+                $(this).find("td:eq(3)").text(customer.cusSalary);
             }
         });
     }
