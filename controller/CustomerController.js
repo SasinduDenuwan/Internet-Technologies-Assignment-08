@@ -1,6 +1,11 @@
 import {customerModel} from '../model/Customer.js'
 
 $(document).ready(function () {
+
+    loadNextCustomerId();
+    loadAllCustomers();
+    rowClick();
+
     function validateField($input, pattern, errorSpanId, errorMessage, customCheck = null) {
         let value = $input.val().trim();
         let $errorSpan = $('#' + errorSpanId);
@@ -41,6 +46,8 @@ $(document).ready(function () {
         validateField($(this), ...validationRules[fieldId]);
     });
 
+    //  Save button in Customer Page
+
     $('#saveCustomer').on('click', function () {
         if (validateAllFields()) {
             let customer = {
@@ -52,17 +59,41 @@ $(document).ready(function () {
             
             if(customerModel.saveCustomer(customer)){
                 addToTable(customer);
-            }
-            alert('Customer Added Successfully');
+                alert('Customer Added Successfully');
+            }            
 
             $(".customer-form")[0].reset();
             $(".customer-form input").css("border", "").next("span").text("");
-
         }
     });
 
-    
 
+    // Remove button in Customer Page
+
+    $('#removeCustomer').click(function (event) {
+        event.preventDefault();
+        let cusID = $('#customerID').val();
+
+        if (!cusID) {
+            $("#cusIdError").text("Please enter the Customer ID to delete.");
+            return;
+        } else {
+            $("#cusIdError").text("");
+        }
+
+        if (customerModel.deleteCustomer(cusID)) {
+            removeFromTable(cusID);
+            alert("Customer deleted successfully!");
+            $(".customer-form")[0].reset();
+        } else {
+            alert("Customer ID not found!");
+        }
+    });
+
+
+
+    // Save to the Customer Table
+    
     function addToTable(customer) {
         $('#customer-table tbody').append(
             `<tr>
@@ -72,5 +103,59 @@ $(document).ready(function () {
                 <td>${customer.cusSalary}</td>
             </tr>`
         );
+    }
+
+
+    // Remove from customer table
+
+    function removeFromTable(cusId) {
+        $("#customer-table tbody tr").each(function () {
+            let rowId = $(this).find("td:first").text();
+            if (rowId === cusId) {
+                $(this).remove();
+            }
+        });
+    }
+
+    function loadNextCustomerId() {
+        let nextId = customerModel.getNextCustomerId();
+        $("#customerID").val(nextId).prop("readonly", false); 
+    }
+
+    // ---------------------------------------------
+    function loadAllCustomers() {
+        const customers = customerModel.loadAllCustomersFromModel(); 
+        displayAllCustomers(customers);
+    }
+
+    function displayAllCustomers(customers) {
+        const tbody = $("#customer-table tbody");
+        tbody.empty(); 
+    
+        customers.forEach(customer => {
+            let row = `<tr>
+                <td>${customer.cusId}</td>
+                <td>${customer.cusName}</td>
+                <td>${customer.cusAddress}</td>
+                <td>${customer.cusSalary}</td>
+            </tr>`;
+    
+            tbody.append(row); 
+        });
+    }
+    // ---------------------------------------------
+
+    function rowClick() {
+        $(document).on("click", "#customer-table tbody tr", function () {
+            let cusId = $(this).find("td:eq(0)").text();
+            let cusName = $(this).find("td:eq(1)").text();
+            let cusAddress = $(this).find("td:eq(2)").text();
+            let cusSalary = $(this).find("td:eq(3)").text();
+    
+            $("#customerID").val(cusId);
+            $("#customerName").val(cusName);
+            $("#customerAddress").val(cusAddress);
+            $("#customerSalary").val(cusSalary);
+        });
     }
 });

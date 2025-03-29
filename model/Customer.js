@@ -32,12 +32,12 @@ function deleteCustomer(cusId) {
 
     if (index !== -1) {
         customersArray.splice(index, 1); // Remove customer from the array
-        console.log(`Customer with ID ${cusId} removed.`);
+        alert(`Customer with ID ${cusId} removed.`);
         console.log(customersArray);
         // updateCounts();
         return true;
     } else {
-        console.log(`Customer with ID ${cusId} not found.`);
+        alert(`Customer with ID ${cusId} not found.`);
         return false;
     }
 }
@@ -91,14 +91,14 @@ function getCustomerIds() {
 
 function getNextCustomerId() {
     if (customersArray.length === 0) {
-        return "C00-001"; // Start from C00-001 if no customers exist
+        return "C00 - 001"; // Start from C00 - 001 if no customers exist
     }
 
-    // Extract numeric part from IDs (e.g., C00-001 -> 001)
+    // Extract numeric part from IDs (e.g., C00 - 001 -> 001)
     let maxId = Math.max(
-        ...customersArray.map(c => parseInt(c.cusId.split("-")[1], 10))
+        ...customersArray.map(c => parseInt(c.cusId.split(" - ")[1], 10))
     );
 
-    let nextId = maxId + 1; 
-    return `C00-${String(nextId).padStart(3, "0")}`; // Format with leading zeros
+    let nextId = maxId + 1;
+    return `C00 - ${String(nextId).padStart(3, "0")}`; // Format with leading zeros
 }
