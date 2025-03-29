@@ -1,4 +1,4 @@
-// import {customerModel} from '../model/Customer.js'
+import {customerModel} from '../model/Customer.js'
 
 $(document).ready(function () {
     function validateField($input, pattern, errorSpanId, errorMessage, customCheck = null) {
@@ -49,12 +49,19 @@ $(document).ready(function () {
                 cusAddress: $('#customerAddress').val(),
                 cusSalary: $('#customerSalary').val()
             };
-            addToTable(customer);
-            // customerModel.saveCustomer(customer);
+            
+            if(customerModel.saveCustomer(customer)){
+                addToTable(customer);
+            }
             alert('Customer Added Successfully');
-            $('.customer-form')[0].reset();
+
+            $(".customer-form")[0].reset();
+            $(".customer-form input").css("border", "").next("span").text("");
+
         }
     });
+
+    
 
     function addToTable(customer) {
         $('#customer-table tbody').append(

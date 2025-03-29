@@ -11,22 +11,21 @@ export const customerModel = {
 };
 
 function saveCustomer(customer) {
-    // Check if the customer ID already exists
+    
     let existingCustomer = customersArray.find(c => c.cusId.toString() === customer.cusId.toString());
 
     if (existingCustomer) {
         console.log(`Customer with ID ${customer.cusId} already exists. Cannot save duplicate.`);
         alert(`Customer with ID ${customer.cusId} already exists!`);
         return false;
+    }else{
+        customersArray.push(customer);
+        console.log(customersArray);
+        // updateCounts();
+        console.log(`Customer with ID ${customer.cusId} saved.`);
+        return true;
     }
-
-    customersArray.push(customer);
-    console.log(customersArray);
-    // updateCounts();
-    console.log(`Customer with ID ${customer.cusId} saved.`);
-    return true;
-}   
-
+}
 
 function deleteCustomer(cusId) {
     let index = customersArray.findIndex(customer => customer.cusId === cusId);
