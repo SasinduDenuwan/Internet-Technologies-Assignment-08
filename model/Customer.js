@@ -1,4 +1,4 @@
-import { customersArray } from "../db/DB";
+import { customersArray } from '../db/DB.js';
 
 export const customerModel = {
     saveCustomer,
@@ -22,10 +22,10 @@ function saveCustomer(customer) {
 
     customersArray.push(customer);
     console.log(customersArray);
-    // updateCounts(); 
+    // updateCounts();
     console.log(`Customer with ID ${customer.cusId} saved.`);
     return true;
-}
+}   
 
 
 function deleteCustomer(cusId) {

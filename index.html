@@ -136,19 +136,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>C00 - 001</td>
-                                            <td>Sasindu Denuwan</td>
-                                            <td>Morawaka</td>
-                                            <td>150000</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>C00 - 002</td>
-                                            <td>Dilum Sharadha</td>
-                                            <td>Deniyaya</td>
-                                            <td>250000</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -167,29 +154,38 @@
                                     <div class="inputData">
                                         <p>Item Code</p>
                                         <input type="text" class="item-ID" id="itemID">
+                                        <br>
+                                        <span class="validateError" id="itemCodeError"></span>
                                     </div>
         
                                     <div class="inputData">
                                         <p>Item Name</p>
                                         <input type="text" class="item-name" id="itemName">
+                                        <br>
+                                        <span class="validateError" id="itemNameError"></span>
                                     </div>
         
                                     <div class="inputData">
                                         <p>Item Qty</p>
-                                        <input type="text" class="item-qty" id="itemQty">
+                                        <input type="number" class="item-qty" id="itemQty">
+                                        <br>
+                                        <span class="validateError" id="itemQtyError"></span>
                                     </div>
         
                                     <div class="inputData">
                                         <p>Unit Price</p>
-                                        <input type="text" class="item-price" id="itemPrice">
-                                    </div>
+                                        <input type="number" class="item-price" id="itemPrice">
+                                        <br>
+                                        <span class="validateError" id="itemUnitPriceError"></span>
+        
+                                </div>
                                 </div>
                                 <div class="itemButtons">
-                                    <button class="save-btn" id="saveItem">Save</button>
-                                    <button class="remove-btn" id="removeItem">Remove</button>
-                                    <button class="update-btn" id="updateItem">Update</button>
-                                    <button class="getAll-btn" id="getAllItem">Get All</button>
-                                    <button class="clear-btn" id="clearItem">Clear All</button>
+                                    <button type="button" class="save-btn" id="saveItem">Save</button>
+                                    <button type="button" class="remove-btn" id="removeItem">Remove</button>
+                                    <button type="button" class="update-btn" id="updateItem">Update</button>
+                                    <button type="button" class="getAll-btn" id="getAllItem">Get All</button>
+                                    <button type="button" class="clear-btn" id="clearItem">Clear All</button>
                                 </div>
                             </div>
         
@@ -204,12 +200,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>I00 - 001</td>
-                                            <td>Lux Bundel</td>
-                                            <td>100</td>
-                                            <td>48</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -382,8 +372,9 @@
         </main>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="js/navigation.js"></script>
+        <script src="js/navigation.js"></script>      
         <script src="controller/IndexController.js"></script>
+        <script src="controller/ItemController.js"></script>
         <script src="controller/CustomerController.js"></script>
 
 </body>
