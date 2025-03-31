@@ -54,7 +54,6 @@ function updateCustomer(customer) {
 
         console.log(`Customer with ID ${customer.cusId} updated.`);
         console.log(customersArray);
-        // updateCounts();
         return true;
     } else {
         console.log(`Customer with ID ${customer.cusId} not found.`);
@@ -72,8 +71,6 @@ function findCustomerById(customerId) {
     let existingCustomer = customersArray.find(c => c.cusId.toString() === customerId);
 
     if (existingCustomer) {
-        // console.log(`Customer with ID ${customerId} found.`);
-        // console.log(existingCustomer);
         return existingCustomer;
     } else {
         console.log(`Customer with ID ${customerId} not found.`);

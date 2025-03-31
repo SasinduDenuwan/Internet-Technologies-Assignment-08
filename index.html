@@ -80,6 +80,9 @@
                 </div>
             </section>
 
+            <section></section>
+            <section></section>
+            <!-- for Manage -->
 
             <section class="customerSection" id="customerSectionID">
                     <form class="customer-form" action="">
@@ -144,6 +147,10 @@
                 </section>
     
     
+                <section></section>
+                <section></section>
+                <!-- For manage -->
+
                 <section class="itemSection" id="itemSectionID">
                     <form class="item-form" action="">
                         <div class="itemContainer">
@@ -163,20 +170,21 @@
                                         <input type="text" class="item-name" id="itemName">
                                         <br>
                                         <span class="validateError" id="itemNameError"></span>
-                                    </div>
         
                                     <div class="inputData">
                                         <p>Item Qty</p>
                                         <input type="number" class="item-qty" id="itemQty">
                                         <br>
                                         <span class="validateError" id="itemQtyError"></span>
-                                    </div>
+                                    </div>  
         
                                     <div class="inputData">
-                                        <p>Unit Price</p>
+                                        <p>Unit Price</p>                                                           
                                         <input type="number" class="item-price" id="itemPrice">
                                         <br>
                                         <span class="validateError" id="itemUnitPriceError"></span>
+
+                                    </div>
         
                                 </div>
                                 </div>
@@ -190,7 +198,7 @@
                             </div>
         
                             <div class="itemTableDiv">
-                                <table class="itemTable">
+                                <table class="itemTable" id="item-table">
                                     <thead>
                                         <tr>
                                             <th>Item Code</th>
@@ -208,6 +216,10 @@
             </section>
 
 
+            <section></section>
+            <section></section>
+            <!-- For manage  -->
+
             <section class="orderSection" id="orderSectionID">
                 <div class="orderContainer">
                     <div class="orderInfo">
@@ -220,37 +232,47 @@
                             <div class="invoiceBody">
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Order ID : </p>
-                                    <input type="text" class="invoicOrder-id" id="txtOrderID">
+                                    <input type="text" class="invoicOrder-id" id="txtOrderID" disabled>
+                                    <br>
+                                    <span class="validateError" id="txtOrderIDError"></span>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Date : </p>
                                     <input type="date" class="invoicOrder-date" id="txtOrderDate">
+                                    <br>
+                                    <span class="validateError" id="txtOrderDateError"></span>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Customer : </p>
-                                    <select name="customerCombo" class="invoicOrder-customer" id="cmbCustomer"></select>
+                                    <select name="customerCombo" class="invoicOrder-customer" id="cmbCustomer">
+                                        <option value="" >Select a Customer</option>
+                                    </select>
+                                    <br>
+                                    <span class="validateError" id="txtCustomerSelectError"></span>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Customer ID : </p>
-                                    <input type="text" class="invoicOrder-customerId" id="txtCustomerID">
+                                    <input type="text" class="invoicOrder-customerId" id="txtCustomerID" readonly>
+                                    <br>
+                                    <span class="validateError" id="txtCustomerIDError"></span>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Name : </p>
-                                    <input type="text" class="invoicOrder-customerName" id="txtCustomerName">
+                                    <input type="text" class="invoicOrder-customerName" id="txtCustomerName" readonly>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Salary : </p>
-                                    <input type="text" class="invoicOrder-customerSalary" id="txtCustomerSalary">
+                                    <input type="text" class="invoicOrder-customerSalary" id="txtCustomerSalary" readonly>
                                 </div>
 
                                 <div class="oneBox">
                                     <p class="invoiceTitleBox">Address : </p>
-                                    <input type="text" class="invoicOrder-customerAddress" id="txtCustomerAddress">
+                                    <input type="text" class="invoicOrder-customerAddress" id="txtCustomerAddress" readonly>
                                 </div>
                             </div>
 
@@ -267,28 +289,34 @@
                                 <div class="firstRow">
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Item : </p>
-                                        <select name="itemCombo" class="itemSelect-item" id="cmbItem"></select>
+                                        <select name="itemCombo" class="itemSelect-item" id="cmbItem">
+                                            <option value="">Select a Item</option>
+                                        </select>
+                                        <br>
+                                        <span class="validateError" id="txtItemSelectError"></span>
                                     </div>
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Item Code : </p>
-                                        <input type="text" class="itemSelect-itemCode" id="txtItemCode">
+                                        <input type="text" class="itemSelect-itemCode" id="txtItemCode" readonly>
+                                        <br>
+                                        <span class="validateError" id="txtItemCodeError"></span>
                                     </div>
                                 </div>
 
                                 <div class="secondRow">
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Item Name : </p>
-                                        <input type="text" class="itemSelect-itemName" id="txtItemName">
+                                        <input type="text" class="itemSelect-itemName" id="txtItemName" readonly>
                                     </div>
 
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Price : </p>
-                                        <input type="text" class="itemSelect-itemPrice" id="txtItemPrice">
+                                        <input type="text" class="itemSelect-itemPrice" id="txtItemPrice" readonly>
                                     </div>
 
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">QtyOnH : </p>
-                                        <input type="text" class="itemSelect-qtyOnHand" id="txtItemQtyOnHand">
+                                        <input type="text" class="itemSelect-qtyOnHand" id="txtItemQtyOnHand" readonly>
                                     </div>
                                 </div>
 
@@ -296,13 +324,13 @@
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Order Quantity : </p>
                                         <input type="text" class="itemSelect-orderQty" id="txtOrderQty">
+                                        <br>
+                                        <span class="validateError" id="orderQtyError"></span>
                                     </div>
                                 </div>
                                 
                                 <div class="fourthRow">
-                                    <button class="add-item-button" id="addItemBtn">Add Item
-                                        
-                                    </button>
+                                    <button class="add-item-button" id="addItemBtn">Add Item</button>
                                 </div>
                             </div>
 
@@ -315,7 +343,11 @@
                             <div class="purchaseBox">
                                 <div class="priceBox">
                                     <p class="total-price" id="totalPrice">Total : Rs. <span id="totalGeneratePrice">00.0</span>/=</p>
+                                    <br>
+                                    <span class="validateError" id="totalGeneratePriceError"></span>
                                     <p class="sub-total-price" id="subTotalPrice">SubTotal : Rs. <span id="SubTotalGeneratePrice">00.0</span>  /=</p>
+                                    <br>
+                                    <span class="validateError" id="subTotalPriceError"></span>
                                 </div>
 
                                 <div class="purchaseFunc">
@@ -323,6 +355,8 @@
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Cash : </p>
                                         <input type="text" class="totalPriceBox-cash" id="txtPriceCash">
+                                        <br>
+                                        <span class="validateError" id="txtPriceCashError"></span>
                                     </div>
 
                                     <div class="oneBox">
@@ -333,6 +367,8 @@
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Balance : </p>
                                         <input type="text" class="totalPriceBox-balance" id="txtPriceBalance">
+                                        <br>
+                                        <span class="validateError" id="txtPriceBalanceError"></span>
                                     </div>
 
                                 </div>
@@ -357,13 +393,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>I00 - 001</td>
-                                    <td>Soap</td>
-                                    <td>120.00</td>
-                                    <td>1500</td>
-                                    <td>120000021</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -374,8 +403,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="js/navigation.js"></script>      
         <script src="controller/IndexController.js"></script>
-        <script src="controller/ItemController.js"></script>
+        <script type="module" src="controller/ItemController.js"></script>
         <script type="module" src="controller/CustomerController.js"></script>
+        <script type="module" src="controller/OrderController.js"></script>
 
 </body>
 </html>

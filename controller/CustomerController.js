@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     loadNextCustomerId();
     loadAllCustomers();
-    rowClick();
+    rowCustomerTableClick();
 
     function validateField($input, pattern, errorSpanId, errorMessage, customCheck = null) {
         let value = $input.val().trim();
@@ -62,8 +62,7 @@ $(document).ready(function () {
                 alert('Customer Added Successfully');
             }            
 
-            $(".customer-form")[0].reset();
-            $(".customer-form input").css("border", "").next("span").text("");
+            clearCustomerAll();
         }
     });
 
@@ -84,8 +83,8 @@ $(document).ready(function () {
         if (customerModel.deleteCustomer(cusID)) {
             removeFromTable(cusID);
             alert("Customer deleted successfully!");
-            $(".customer-form")[0].reset();
-            $(".customer-form input").css("border", "").next("span").text("");
+            clearCustomerAll();
+            loadNextCustomerId();
         } else {
             alert("Customer ID not found!");
         }
@@ -114,15 +113,43 @@ $(document).ready(function () {
             if (customerModel.updateCustomer(customer)) {
                 updateTable(customer);
                 console.log("Customer updated successfully!");
-                $(".customer-form")[0].reset();
-                $(".customer-form input").css("border", "").next("span").text("");
+                clearCustomerAll();
             } else {
                 alert("Customer ID not found! Unable to update.");
             }
         }
     });
 
+    // Get All Button in Customer Page
+
+    $('#getAllCustomer').click(function (event) {
+        event.preventDefault();
     
+        if (validateCustomerID()) {
+            let cusId = $('#customerID').val().trim();
+
+            let foundCustomer = customerModel.findCustomerById(cusId);
+
+            if (foundCustomer) {
+                $("#customerID").val(foundCustomer.cusId);
+                $("#customerName").val(foundCustomer.cusName);
+                $("#customerAddress").val(foundCustomer.cusAddress);
+                $("#customerSalary").val(foundCustomer.cusSalary);                
+                console.log("Customer Found!", foundCustomer);
+            } else {
+                alert("Customer ID not found!");
+                clearCustomerAll();
+            }
+        }
+    });
+
+    // Clear All Button in Customer Page
+
+    $('#clearCustomer').click(function (event){
+        event.preventDefault();
+        clearCustomerAll();
+    })
+
     // Save to the Customer Table
     
     function addToTable(customer) {
@@ -163,6 +190,27 @@ $(document).ready(function () {
         });
     }
 
+    function validateCustomerID() {
+        let $input = $('#customerID');
+        let value = $input.val().trim();
+        let $errorSpan = $('#cusIdError');
+        let pattern = /^C\d{2} - \d{3}$/;
+
+        if (!value) {
+            $input.css('border', '2px solid red');
+            $errorSpan.text('The text box is empty').css('color', 'red');
+            return false;
+        } else if (!pattern.test(value)) {
+            $input.css('border', '2px solid red');
+            $errorSpan.text('Invalid format! (e.g., C00 - 001)').css('color', 'red');
+            return false;
+        } else {
+            $input.css('border', '2px solid green');
+            $errorSpan.text('').css('color', 'green');
+            return true;
+        }
+    }
+
     function loadNextCustomerId() {
         let nextId = customerModel.getNextCustomerId();
         $("#customerID").val(nextId).prop("readonly", false); 
@@ -191,8 +239,9 @@ $(document).ready(function () {
     }
     // ---------------------------------------------
 
-    function rowClick() {
+    function rowCustomerTableClick() {
         $(document).on("click", "#customer-table tbody tr", function () {
+            clearCustomerAll();
             let cusId = $(this).find("td:eq(0)").text();
             let cusName = $(this).find("td:eq(1)").text();
             let cusAddress = $(this).find("td:eq(2)").text();
@@ -203,5 +252,11 @@ $(document).ready(function () {
             $("#customerAddress").val(cusAddress);
             $("#customerSalary").val(cusSalary);
         });
+    }
+
+    function clearCustomerAll(){
+        $(".customer-form")[0].reset();
+        $(".customer-form input").css("border", "");
+        $('.validateError').text("");
     }
 });
