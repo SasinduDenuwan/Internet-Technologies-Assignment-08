@@ -51,24 +51,31 @@
             <section class="dashboard" id="dashboardID">
                 <div class="dashbord-container">
 
-                    <div class="dash-box" id="customer-box">
-                        <p class="box-title">Customers</p>
-                        <i class="fa-solid fa-users icons"></i>
-                        <h3 class="count" id="customer-count">0</h3>
-                    </div>
+                    <a href="#customerSectionID">
+                        <div class="dash-box" id="customer-box">
+                            <p class="box-title">Customers</p>
+                            <i class="fa-solid fa-users icons"></i>
+                            <h3 class="count" id="customer-count">0</h3>
+                        </div>
+                    </a>
 
-                    <div class="dash-box" id="item-box">
-                        <p class="box-title">Items</p>
-                        <i class="fa-solid fa-cubes icons"></i>
-                        <h3 class="count" id="item-count">0</h3>
-                    </div>
+                    <a href="#itemSectionID">
+                        <div class="dash-box" id="item-box">
+                            <p class="box-title">Items</p>
+                            <i class="fa-solid fa-cubes icons"></i>
+                            <h3 class="count" id="item-count">0</h3>
+                        </div>
+                    </a>
 
-                    <div class="dash-box" id="orders-box">
-                        <p class="box-title">Orders</p>
-                        <i class="fa-solid fa-cart-shopping icons"></i> 
-                        <h3 class="count" id="order-count">0</h3>
-                    </div>
-
+                    <a href="#orderSectionID">
+                        <div class="dash-box" id="orders-box">
+                            <p class="box-title">Orders</p>
+                            <i class="fa-solid fa-cart-shopping icons"></i> 
+                            <h3 class="count" id="order-count">0</h3>
+                        </div>
+    
+                    </a>
+                    
                     <div class="dash-box" id="settings-box">
                         <p class="box-title">Settings</p>
                         <i class="fa-solid fa-gear icons"></i>
@@ -323,7 +330,7 @@
                                 <div class="thirdRow">
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Order Quantity : </p>
-                                        <input type="text" class="itemSelect-orderQty" id="txtOrderQty">
+                                        <input type="number" class="itemSelect-orderQty" id="txtOrderQty">
                                         <br>
                                         <span class="validateError" id="orderQtyError"></span>
                                     </div>
@@ -354,19 +361,19 @@
 
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Cash : </p>
-                                        <input type="text" class="totalPriceBox-cash" id="txtPriceCash">
+                                        <input type="number" class="totalPriceBox-cash" id="txtPriceCash">
                                         <br>
                                         <span class="validateError" id="txtPriceCashError"></span>
                                     </div>
 
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Discount : </p>
-                                        <input type="text" class="totalPriceBox-discount" id="txtPriceDiscount">
+                                        <input type="number" class="totalPriceBox-discount" id="txtPriceDiscount">
                                     </div>
 
                                     <div class="oneBox">
                                         <p class="invoiceTitleBox">Balance : </p>
-                                        <input type="text" class="totalPriceBox-balance" id="txtPriceBalance">
+                                        <input type="text" class="totalPriceBox-balance" id="txtPriceBalance" readonly>
                                         <br>
                                         <span class="validateError" id="txtPriceBalanceError"></span>
                                     </div>
@@ -407,5 +414,5 @@
         <script type="module" src="controller/CustomerController.js"></script>
         <script type="module" src="controller/OrderController.js"></script>
 
-</body>
+    </body>
 </html>

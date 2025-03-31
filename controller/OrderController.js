@@ -46,7 +46,7 @@ $(document).ready(function () {
         let selectedValue = $(this).val();
     
         if (selectedValue) {
-            $(this).find("option:selected").text(selectedValue);  // Change displayed text to the selected customer name
+            $(this).find("option:selected").text(selectedValue);  
             setCustomerDetails(selectedValue);  
         } 
     });
@@ -115,22 +115,21 @@ $(document).ready(function () {
         if (isOrderValidated()) {
             
             let price = parseFloat($('#txtItemPrice').val());
-            let quantity = parseInt($('#txtItemQtyOnHand').val());
+            let quantity = parseInt($('#txtOrderQty').val());
     
-            let itemCode = $('#txtItemCode').val(); // Get the item code of the selected item
-            let item = itemModel.findItemByCode(itemCode); // Get item details based on the item code
+            let itemCode = $('#txtItemCode').val();
+            let item = itemModel.findItemByCode(itemCode); 
     
             if (item) {
-                let availableQty = item.itemQtyOnHand; // Quantity on hand for the selected item
-    
-                // Check if entered quantity is greater than available quantity
+                let availableQty = item.itemQtyOnHand;
+
                 if (quantity > availableQty) {
                     $('#orderQtyError').text(`Cannot order more than ${availableQty} items. Available stock: ${availableQty}`);
-                    return; // Stop further processing if the quantity exceeds the available stock
+                    return; 
                 } else {
-                    $('#orderQtyError').text(''); // Clear any previous error message if the quantity is valid
+                    $('#orderQtyError').text(''); 
                 }
-    
+
                 let total = price * quantity;
                 totalPrice += total;
     
@@ -143,14 +142,11 @@ $(document).ready(function () {
                     total: total
                 };
     
-                // Save the order item details
                 orderDetailsModel.saveOrderDetails(orderItem);
                 addToOrderTable(orderItem);
                 updateTotal(totalPrice);
                 clearOrderItemFields();
             }
-
-            resetOrderForm();
         }
 
     });
@@ -179,12 +175,13 @@ $(document).ready(function () {
             let isSaved = orderModel.saveOrder(order);
     
             if (isSaved) {
-                // Reduce stock quantities for ordered items
+                
                 $('#orderTable tbody tr').each(function () {
                     let itemCode = $(this).find('td:eq(0)').text();
                     let orderedQty = parseInt($(this).find('td:eq(3)').text());
     
                     let item = itemModel.findItemByCode(itemCode);
+                    
                     if (item) {
                         let newQtyOnHand = item.itemQtyOnHand - orderedQty;
                         
@@ -193,18 +190,13 @@ $(document).ready(function () {
                             return;
                         }
     
-                        // Update item quantity
-                        itemModel.updateItem({
-                            ...item,
-                            itemQtyOnHand: newQtyOnHand
-                        });
+                        itemModel.updateItem({...item,itemQtyOnHand: newQtyOnHand});
                     }
                 });
     
                 updateItemTableAfterOrder(itemModel.getUpdatedArray());
                 alert("Order Placed Successfully!");
                 resetOrderForm();
-                // updateCounts();
             }
         }
     });
@@ -212,18 +204,17 @@ $(document).ready(function () {
 
     $('#orderQtyTxt').on('input', function () {
         let enteredQty = parseInt($(this).val());
-        let itemCode = $('#orderItemCodeTxt').val(); // Get the selected item's code
+        let itemCode = $('#orderItemCodeTxt').val(); 
     
         if (itemCode) {
-            let item = itemModel.findItemByCode(itemCode); // Get item details based on the item code
+            let item = itemModel.findItemByCode(itemCode); 
             if (item) {
-                let availableQty = item.itemQtyOnHand; // Quantity on hand from the item model
+                let availableQty = item.itemQtyOnHand; 
     
-                // Check if entered quantity is greater than available quantity
                 if (enteredQty > availableQty) {
                     $('#orderQtyTxtError').text(`Cannot order more than ${availableQty} items. Available stock: ${availableQty}`);
                 } else {
-                    $('#orderQtyTxtError').text(''); // Clear the error message if the quantity is valid
+                    $('#orderQtyTxtError').text('');
                 }
             }
         }
@@ -251,10 +242,12 @@ function addToOrderTable(orderItem) {
 }
 
 function clearOrderItemFields() {
-    $('#orderItemCodeTxt').val('');
-    $('#orderitemNameTxt').val('');
-    $('#orderItemPriceTxt').val('');
-    $('#orderQtyTxt').val('');
+    $('#txtItemCode').val('');
+    $('#txtItemName').val('');
+    $('#txtItemPrice').val('');
+    $('#txtItemQtyOnHand').val('');
+    $('#txtOrderQty').val('');
+    $('#cmbItem').val('');
 }
 
 
@@ -270,24 +263,12 @@ function updateTotal() {
 
 
 function updateBalance() {
-    let totalAfterDiscount = parseFloat($('#SubTotalGeneratePrice').text()) || 0; 
     let cash = parseFloat($('#txtPriceCash').val()) || 0; 
     
-    let balance = cash - totalAfterDiscount; 
+    let balance = cash - parseFloat($('#SubTotalGeneratePrice').text());
 
     $('#txtPriceBalance').val(balance.toFixed(2)); 
 }
-
-
-// 
-// 
-// 
-// 
-// 
-// 
-
-
-
 
 
 function isOrderValidated() {
@@ -303,7 +284,7 @@ function isOrderValidated() {
         $("#orderQtyError").text("Enter order qty");
         isValid = false;
     } else {
-        $("#orderQtyError").text("");
+        $("#orderQtyError").text("");      
     }
     if (!$('#txtItemCode').val()) {
         $("#txtItemSelectError").text("Select a Item");
@@ -311,6 +292,7 @@ function isOrderValidated() {
     } else {
         $("#txtItemSelectError").text("");
     }
+
 
     return isValid;
 }
@@ -361,6 +343,8 @@ function isOrderFinalized() {
 function resetOrderForm() {
     // $('#orderSectionID input').val('');
 
+    loadNextOrderId();
+
     $('#cmbCustomer').val('option0');
     $('#cmbItem').val('option0');
 
@@ -381,6 +365,9 @@ function resetOrderForm() {
     $('#txtOrderQty').val('');
 
     $('.validateError').text('');
+
+    $('#txtPriceCash').text('');
+    $('#txtPriceDiscount').text('');
 
     $('#orderTable tbody').empty();
 
