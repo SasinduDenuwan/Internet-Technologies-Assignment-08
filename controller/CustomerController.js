@@ -63,6 +63,7 @@ $(document).ready(function () {
             }            
 
             clearCustomerAll();
+            
         }
     });
 
@@ -258,5 +259,7 @@ $(document).ready(function () {
         $(".customer-form")[0].reset();
         $(".customer-form input").css("border", "");
         $('.validateError').text("");
+
+        loadNextCustomerId();
     }
 });
